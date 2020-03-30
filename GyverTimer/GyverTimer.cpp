@@ -54,6 +54,7 @@ boolean GTimer::isEnabled() {
 boolean GTimer::isReady() {	
 	if (!_state) return false;							// если таймер остановлен
 	uint32_t thisTime = (_type) ? millis() : micros();	// текущее время
+	_timeLeft=thisTime - _timer;
 	if (thisTime - _timer >= _interval) {				// проверка времени
 		if (_mode) {						// если режим интервалов
 			do {
@@ -69,6 +70,9 @@ boolean GTimer::isReady() {
 	}
 }
 
+uint32_t GTimer::getTimeLeft(int devide){
+	return _interval/devide -_timeLeft/devide;
+}
 // сменить режим вручную
 void GTimer::setMode(boolean mode) {
 	_mode = mode;

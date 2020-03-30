@@ -48,6 +48,7 @@ class GTimer {
 	void start();							// запустить/перезапустить (со сбросом счёта)
 	void stop();							// остановить таймер (без сброса счёта)	
 	void resume();							// продолжить (без сброса счёта)	
+	uint32_t getTimeLeft(int devide);
 	
 	// служебное
 	void setMode(boolean mode);				// установка режима работы вручную: AUTO или MANUAL (TIMER_INTERVAL / TIMER_TIMEOUT)
@@ -56,6 +57,7 @@ class GTimer {
 	uint32_t _timer = 0;
 	uint32_t _interval = 0;
 	uint32_t _resumeBuffer = 0;
+	uint32_t _timeLeft = 0;
 	boolean _mode = true;
 	boolean _state = false;
 	boolean _type = true;
